@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
-import 'package:vocab_app/screens/main_screen.dart';
+import 'package:vocab_app/screens/homescreen_test.dart';
 
 void main() {
   KakaoSdk.init(nativeAppKey: "25a57ebdf2c865c94f140560fbdddb8c");
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             secondary: const Color(0xff272e81),
             error: const Color(0xffDB4455)),
       ),
-      home: const MainScreen(),
+      home: const HomeScreenTest(),
     );
   }
 }

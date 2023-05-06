@@ -14,20 +14,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final List<Vocab> list_vocab = [];
 
-  final List<String> pOs = [
-    "n",
-    "pro",
-    "v",
-    "adj",
-    "adv",
-    "conj",
-    "int",
-    "prep",
-  ];
-
   void addVocab(String vocab, String pOs, String meaning, String example) {
-    final newVocab =
-        Vocab(vocab: vocab, pOs: pOs, meaning: meaning, example: example);
+    final newVocab = Vocab(
+        vocab: vocab,
+        pOs: pOs,
+        meaning: meaning,
+        example: example,
+        category: "1",
+        imageURL: "");
 
     setState(() {
       list_vocab.add(newVocab);
@@ -53,12 +47,13 @@ class _HomeScreenState extends State<HomeScreen> {
           : SingleChildScrollView(
               child: VocabWidget(list_vocab),
             ),
+      /*
       floatingActionButton: FloatingActionButton(
         onPressed: () => showAddVocab(context),
         child: const Icon(
           Icons.add,
         ),
-      ),
+      ),*/
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:vocab_app/models/vocab_model.dart';
@@ -61,6 +62,19 @@ class _AddVocabState extends State<AddVocab> {
   final _exampleController = TextEditingController();
   final String _today = DateFormat.yMd().format(DateTime.now());
 
+  String selected_pOs = "Select POS";
+
+  final List<String> pOs = [
+    "n",
+    "pro",
+    "v",
+    "adj",
+    "adv",
+    "conj",
+    "int",
+    "prep",
+  ];
+
   void _submitData() {
     final enteredVocab = _vocabController.text;
     final enteredMeaning = _meaningController.text;
@@ -68,7 +82,7 @@ class _AddVocabState extends State<AddVocab> {
 
     widget.addVocab(
       enteredVocab,
-      "Noun",
+      selected_pOs,
       enteredMeaning,
       enteredExample,
     );
@@ -83,7 +97,7 @@ class _AddVocabState extends State<AddVocab> {
       child: Container(
         padding: const EdgeInsets.all(10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TextField(
               decoration: const InputDecoration(
@@ -103,21 +117,43 @@ class _AddVocabState extends State<AddVocab> {
               ),
               controller: _exampleController,
             ),
-            SizedBox(
-              height: 70,
-              child: Row(
-                children: <Widget>[
-                  Text(_today),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Choose Date',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              child: Text(
+                selected_pOs,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+            ),
+            // CupertinoPicker pOs
+            Container(
+              width: 100,
+              height: 200,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.deepPurple),
+              child: RotatedBox(
+                quarterTurns: 1,
+                child: CupertinoPicker(
+                    scrollController:
+                        FixedExtentScrollController(initialItem: 0),
+                    itemExtent: 75,
+                    onSelectedItemChanged: (i) {
+                      setState(() {
+                        selected_pOs = pOs[i];
+                      });
+                    },
+                    children: [
+                      ...pOs.map(
+                        (e) => Text(
+                          e,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                        ),
+                      )
+                    ]),
               ),
             ),
             ElevatedButton(
