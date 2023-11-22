@@ -5,7 +5,6 @@ import 'package:vocab_app/screens/quiz_screen.dart';
 import 'package:vocab_app/screens/search_screen.dart';
 import 'package:vocab_app/screens/setting_screen.dart';
 import 'package:vocab_app/widgets/tab_bottom_sheet.dart';
-import 'package:vocab_app/widgets/vocab_widget.dart';
 
 class TabScreen extends StatefulWidget {
   const TabScreen({super.key});

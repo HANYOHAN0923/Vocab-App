@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vocab_app/models/vocab_model.dart';
 import 'package:vocab_app/widgets/app_bar_widget.dart';
 import 'package:vocab_app/widgets/vocab_widget.dart';
-
-import '../models/vocab_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,48 +11,31 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Vocab> list_vocab = [];
-
-  void addVocab(String vocab, String pOs, String meaning, String example) {
-    final newVocab = Vocab(
+  final vocab_list = [
+    Vocab(
         vocab: vocab,
-        pOs: pOs,
+        part: part,
         meaning: meaning,
         example: example,
-        category: "1",
-        imageURL: "");
-
-    setState(() {
-      list_vocab.add(newVocab);
-    });
-  }
-
-  void showAddVocab(BuildContext context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (_) {
-          return AddVocab(addVocab);
-        });
-  }
+        usage: usage,
+        category: category),
+    Vocab(
+        vocab: vocab,
+        part: part,
+        meaning: meaning,
+        example: example,
+        usage: usage,
+        category: category),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppBar("Today's Vocab"),
-      body: list_vocab.isEmpty
-          ? const Center(
-              child: Text('Plz Add Todays Vocab'),
-            )
-          : SingleChildScrollView(
-              child: VocabWidget(list_vocab),
-            ),
-      /*
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => showAddVocab(context),
-        child: const Icon(
-          Icons.add,
-        ),
-      ),*/
+      appBar: MainAppBar("Today's VocabWidget"),
+      body: Column(children: [
+        VocabWidget(vocab: vocab_list[0]),
+        VocabWidget(vocab: vocab_list[1]),
+      ]),
     );
   }
 }
