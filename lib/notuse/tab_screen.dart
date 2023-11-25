@@ -4,7 +4,7 @@ import 'package:vocab_app/screens/bookmark_screen.dart';
 import 'package:vocab_app/screens/home_screen.dart';
 import 'package:vocab_app/screens/quiz_screen.dart';
 import 'package:vocab_app/screens/search_screen.dart';
-import 'package:vocab_app/screens/setting_screen.dart';
+import 'package:vocab_app/screens/profile_screen.dart';
 
 class TabScreenNotUse extends StatefulWidget {
   const TabScreenNotUse({super.key});
@@ -21,7 +21,7 @@ class _TabScreenState extends State<TabScreenNotUse> {
     const SearchScreen(),
     const QuizSreen(),
     const BookmarkScreen(),
-    const SettingScreen(),
+    const ProfileScreen(),
   ];
 
   @override

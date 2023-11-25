@@ -13,29 +13,35 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final vocab_list = [
     Vocab(
-        vocab: vocab,
-        part: part,
-        meaning: meaning,
-        example: example,
-        usage: usage,
-        category: category),
+      vocab: "apple",
+      pronounciation: "/asdfasdfa/",
+      part: "noun",
+      meaning: "苹果",
+      example: "I like apple",
+      usage: "give sth to sb",
+      category: "fruit",
+    ),
     Vocab(
-        vocab: vocab,
-        part: part,
-        meaning: meaning,
-        example: example,
-        usage: usage,
-        category: category),
+      vocab: "korea",
+      pronounciation: "/asdfasdf/",
+      part: "noun",
+      meaning: "韩国",
+      example: "I am korean",
+      usage: "slka;j asdfa",
+      category: "nationality",
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainAppBar("Today's VocabWidget"),
-      body: Column(children: [
-        VocabWidget(vocab: vocab_list[0]),
-        VocabWidget(vocab: vocab_list[1]),
-      ]),
+      body: ListView.builder(
+        itemCount: vocab_list.length,
+        itemBuilder: (context, index) {
+          return VocabWidget(vocab: vocab_list[index]);
+        },
+      ),
     );
   }
 }

@@ -22,28 +22,32 @@ class _VocabWidgetState extends State<VocabWidget> {
             child: Column(
               children: [
                 Text(
-                  'apple',
+                  widget.vocab.vocab,
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: Colors.black.withOpacity(0.7),
                   ),
                 ),
-                Text('/æp.əl/'),
+                Text(widget.vocab.pronounciation),
               ],
             ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("n. 사과라는 뜻입니다."),
+              Text(widget.vocab.part + widget.vocab.meaning),
               Container(
                 width: 220,
                 height: 2,
                 color: Colors.blueAccent.withOpacity(0.7),
               ),
-              Text("Ex) I Like Apple."),
-              Text("U) give sth to sb"),
+              Row(
+                children: [],
+              ),
+              Row(),
+              Text(widget.vocab.example),
+              Text(widget.vocab.usage),
             ],
           ),
         ],

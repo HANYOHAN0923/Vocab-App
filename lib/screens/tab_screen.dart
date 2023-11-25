@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vocab_app/screens/home_screen.dart';
 import 'package:vocab_app/screens/quiz_screen.dart';
 import 'package:vocab_app/screens/search_screen.dart';
-import 'package:vocab_app/screens/setting_screen.dart';
+import 'package:vocab_app/screens/profile_screen.dart';
 import 'package:vocab_app/widgets/tab_bottom_sheet.dart';
 
 class TabScreen extends StatefulWidget {
@@ -16,11 +16,11 @@ class TabScreen extends StatefulWidget {
 class _TabScreenState extends State<TabScreen> {
   int index = 0;
 
-  List<Widget> _pages = [
+  final List<Widget> _pages = const [
     HomeScreen(),
     SearchScreen(),
     QuizSreen(),
-    SettingScreen(),
+    ProfileScreen(),
   ];
 
   @override
@@ -44,10 +44,10 @@ class _TabScreenState extends State<TabScreen> {
             },
           ),
           BottomBarItem(
-            icon: const Icon(Icons.photo, size: 10.0),
-            iconSelected:
-                const Icon(Icons.photo, color: Colors.orange, size: 10.0),
-            title: 'Photo',
+            icon: const Icon(Icons.search_outlined, size: 10.0),
+            iconSelected: const Icon(Icons.search_outlined,
+                color: Colors.orange, size: 10.0),
+            title: 'Search',
             dotColor: Colors.yellow,
             onTap: (value) {
               setState(() {
@@ -57,29 +57,29 @@ class _TabScreenState extends State<TabScreen> {
             },
           ),
           BottomBarItem(
-            icon: const Icon(Icons.person, size: 10.0),
-            iconSelected:
-                const Icon(Icons.person, color: Colors.green, size: 10.0),
-            title: 'Person',
+            icon: const Icon(Icons.games_outlined, size: 10.0),
+            iconSelected: const Icon(Icons.games_outlined,
+                color: Colors.green, size: 10.0),
+            title: 'Quiz',
             dotColor: Colors.lightGreen,
             onTap: (value) {
               setState(() {
                 index = value;
               });
-              print('Profile $value');
+              print('Quiz $value');
             },
           ),
           BottomBarItem(
-            icon: const Icon(Icons.settings, size: 10.0),
-            iconSelected:
-                const Icon(Icons.settings, color: Colors.purple, size: 10.0),
-            title: 'Settings',
+            icon: const Icon(Icons.person_outlined, size: 10.0),
+            iconSelected: const Icon(Icons.person_outlined,
+                color: Colors.purple, size: 10.0),
+            title: 'Profile',
             dotColor: Colors.pink,
             onTap: (value) {
               setState(() {
                 index = value;
               });
-              print('Settings $value');
+              print('Profile $value');
             },
           ),
         ],
@@ -114,13 +114,6 @@ class _TabScreenState extends State<TabScreen> {
                   builder: (_) {
                     return AddCategory();
                   }),
-            ),
-            FloatingCenterButtonChild(
-              child: const Icon(
-                Icons.cancel,
-                color: AppColors.white,
-              ),
-              onTap: () {},
             ),
           ],
         ),
